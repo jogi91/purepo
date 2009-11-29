@@ -4,6 +4,10 @@ Um das Shellskript zu installieren muss unterhalb des homeordners ein Verzeichni
 erstellt werden. In diesem muss dass Repository einmal geklont werden, damit es vom Skript 
 verarbeitet werden kann.
 
+Ausserdem muss das Skript aus dem Repository herauskopiert werden, da das Repository, im 
+Scriptverlauf geändert bzw. gelöscht wird. Es funktioniert zwar auch, wenn das Script im 
+Repository ist, aber das ist wahrscheinlich eher unsicher.
+
 Dann kann das Script in die lokale Crontab eingebunden werden und klont automatisch zu den 
 gegebenen Zeiten das neue Repository. Bei einem Fehler wird das Skript abgebrochen und beim 
 naechsten ausfuehren wird eine E-Mail an root versendet, mit dem Fehlerlog.

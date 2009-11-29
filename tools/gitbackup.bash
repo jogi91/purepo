@@ -12,7 +12,7 @@ fi
 mv ~/.gitbackup/purepo/ ~/.gitbackup/purepo.old/
 
 # aktuellsten Stand klonen, fehler in Datei umleiten, Rückgabewert speichern
-git clone --bare http://wetterstation.kanti-wohlen.ch/purepo 2> fehlerlog.txt
+git clone http://wetterstation.kanti-wohlen.ch/purepo 2> fehlerlog.txt
 r=$?
 
 
