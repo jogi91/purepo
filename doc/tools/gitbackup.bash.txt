@@ -1,0 +1,9 @@
+= Shellskript gitbackup.bash =
+
+Um das Shellskript zu installieren muss unterhalb des homeordners ein Verzeichnis .gitbackup 
+erstellt werden. In diesem muss dass Repository einmal geklont werden, damit es vom Skript 
+verarbeitet werden kann.
+
+Dann kann das Script in die lokale Crontab eingebunden werden und klont automatisch zu den 
+gegebenen Zeiten das neue Repository. Bei einem Fehler wird das Skript abgebrochen und beim 
+naechsten ausfuehren wird eine E-Mail an root versendet, mit dem Fehlerlog.
