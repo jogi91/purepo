@@ -1,4 +1,8 @@
-= v.0.1.2 =
+= v0.1.3 =
+
+* Debug im Backupscript, Pfade korrigiert
+
+= v0.1.2 =
 
 * Backupscript auf den Github-Account angepasst
 
