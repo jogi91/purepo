@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd /home/jogi/.gitbackup/
-touch /home/jogi/.gitbackup/test
+
 # wenn das Skript einen Fehler Produziert hat, nicht mehr weiter ausführen.
 if test -f /home/jogi/.gitbackup/scriptblock
 	then
