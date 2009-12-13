@@ -2,10 +2,16 @@
 
 module Dataprocessing
 
-def writeLog(wert,log)
-	#hier kommt der Code hin, der Logs schreibt
-	puts wert
-	puts log
+def writeLog(spannung,wert)
+	File.open("pfad/log.txt","a") do |datei|
+		datei.puts
+		datei.print Time.new
+		datei.print ": "
+		datei.print spannung
+		datei.print " V "
+		datei.print wert
+		datei.print " [Einheit]"
+	end
 end
 
 def drawPlot(log, outputfile)
