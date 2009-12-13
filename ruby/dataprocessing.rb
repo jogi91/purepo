@@ -8,7 +8,7 @@ def writeLog(wert,log)
 	puts log
 end
 
-def drawPlot(log)
+def drawPlot(log, outputfile)
 #Diese Funktion wird den Plot zeichnen.
 #Das kann z. B. über ein Shellscript realisiert werden, das den Ploticus aufruft.
 end
