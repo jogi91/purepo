@@ -1,0 +1,1 @@
+system "ploticus -prefab chron data=../log/logdemo header=yes x=1 y=2 datefmt=mm/dd/yyyy  xinc=\"1 day\" mode=line unittype=datetime title=\"temperatures this week\" -o log/graphtest.png -png"
