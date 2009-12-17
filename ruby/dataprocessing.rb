@@ -13,7 +13,11 @@ def drawPlot(logfile, outputfile, titel)
 end
 
 class Spannung
+	#Attribute werden festgelegt:
+	attr_accessor :wert, :quelle
+	
 	def to_temp
+		@wert*5
 	end
 end
 
