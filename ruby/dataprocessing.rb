@@ -8,9 +8,8 @@ def writeLog(wert,log)
 	puts log
 end
 
-def drawPlot(log, outputfile)
-#Diese Funktion wird den Plot zeichnen.
-#Das kann z. B. über ein Shellscript realisiert werden, das den Ploticus aufruft.
+def drawPlot(logfile, outputfile, titel)
+	system "ploticus -prefab chron data=../log/"+logfile+" header=yes x=1 y=2 datefmt=mm/dd/yyyy  xinc=\"1 day\" mode=line 	unittype=datetime title=\"#{titel}\" -o ../graph/"+outputfile+" -png"
 end
 
 end
