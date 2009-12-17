@@ -12,4 +12,9 @@ def drawPlot(logfile, outputfile, titel)
 	system "ploticus -prefab chron data=../log/"+logfile+" header=yes x=1 y=2 datefmt=mm/dd/yyyy  xinc=\"1 day\" mode=line 	unittype=datetime title=\"#{titel}\" -o ../graph/"+outputfile+" -png"
 end
 
+class Spannung
+	def to_temp
+	end
+end
+
 end
