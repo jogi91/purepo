@@ -31,7 +31,7 @@ class Spannung
 				self.to_humid
 				$log.debug("to_humid aufgerufen")
 			else
-				log.debug "Kein fall trifft zu"
+				$log.warn "Spannung hat keine gueltige Quelle"
 		end
 	end
 	

@@ -11,8 +11,8 @@ $log.debug("App launched")
 
 # Array mit allen zu verarbeitenden Werten fuellen als Konfiguration:
 werte = ["temperatur", "weiterer Wert"]
-$log.debug("folgende Werte werden ausgegeben")
-$log.debug(werte)
+$log.info("folgende Werte werden ausgegeben")
+$log.info(werte)
 
 foo = Spannung.new 4
 
