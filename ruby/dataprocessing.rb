@@ -2,10 +2,13 @@
 
 module Dataprocessing
 
-def writeLog(wert,log)
-	#hier kommt der Code hin, der Logs schreibt
-	puts wert
-	puts log
+def writeLog(temperatur)
+	File.open("/Users/Zeno/Desktop/temperaturlog.txt","a") do |datei|
+		datei.puts
+		datei.print Time.now.strftime("%d/%m/%Y.%H:%M")
+		datei.print " "
+		datei.print temperatur
+	end
 end
 
 def drawPlot(logfile, outputfile, titel)
