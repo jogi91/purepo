@@ -22,7 +22,7 @@ class Spannung
 		@quelle = quelle
 	end
 	
-	def to_wert
+	def to_i
 		case @quelle
 			when "temperatur"
 				self.to_temp
