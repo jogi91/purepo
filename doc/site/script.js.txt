@@ -1,0 +1,9 @@
+Wenn die Funktion aufgerufen wird durch das Klicken 
+eines "Link"-Thumbnails, wird ihr der Pfad des Bildes übergeben 
+und das grosse Bild (id="bildgross")updatet.
+
+In der von php generierten Seite sollte ein Thumbnail so aussehen:
+<a href="javascript:anzeigen(document.getElementById('thumb1').src);"><img src="thumb.jpg" id="thumb1"/></a>
+
+
+
