@@ -1,0 +1,58 @@
+<html>
+	
+	<head><title>Javascript Test</title>
+
+		<script type="text/javascript">	
+		
+			/*Diese Variable bestimmt, welches Bild als nächstes anzeigt wird.*/
+			var toggle=0;
+	
+			function anzeigen (pfad) {
+				document.getElementById('bild').src = pfad
+				if (toggle==0) {
+					toggle=1;
+				} else {
+					toggle=0;
+				}
+			}		
+						
+			function arrow (ev) {
+				 arrows=((ev.which)||(ev.keyCode));
+				 if (arrows==39) {
+				 	if (toggle==0) {
+				 		document.getElementById('bild').src = "pics/februar.png";
+				 		toggle=1;
+				 	} else if (toggle==1) {
+				 		document.getElementById('bild').src = "pics/januar.png";
+				 		toggle=0;
+				 	}
+				 }
+				 
+				 if (arrows==37) {
+				 	if (toggle==0) {
+				 		document.getElementById('bild').src = "pics/februar.png";
+				 		toggle=1;
+				 	} else if (toggle==1) {
+				 		document.getElementById('bild').src = "pics/januar.png";
+				 		toggle=0;
+				 	}
+				 }
+			}
+		</script>
+		
+		<style type="text/css">
+			#bild {width:50%; height:50%;}
+		</style>
+		
+	</head>
+
+	<body bgcolor="grey" onkeydown="arrow(event)">
+		<h1>Title</h1>
+		<img src="pics/januar.png" id="bild"></img>
+		<h1>Liste</h1>
+		<a href='javascript:anzeigen("pics/januar.png")'>pics/januar</a>
+		<br>
+		<a href='javascript:anzeigen("pics/februar.png")'>pics/februar</a>
+	</body>
+	
+</html>
