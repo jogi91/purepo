@@ -1,1 +1,65 @@
 require "dataprocessing"
+require "logger"
+
+$log = Logger.new(STDERR)
+
+include Dataprocessing
+
+$log.debug("App launched")
+
+
+
+# Array mit allen zu verarbeitenden Werten fuellen als Konfiguration:
+werte = ["temperatur", "weiterer Wert"]
+$log.info("folgende Werte werden ausgegeben")
+$log.info(werte)
+
+#Fuer jeden Wert folgendes tun:
+werte.each { |wert|
+	#Spannungsobjekt erstellen
+	zahlwert = 5
+	wert = Spannung.new(zahlwert, wert)
+	$log.info(wert)
+	
+	#Wert in das Jahreslogfile schreiben z.B. log/2009/temperatur/logyearly
+	writeLog(wert.to_i, Time.now.year+"/"+wert+"/logyearly")
+	
+	$log.debug("Jahreslog fertig geschrieben")
+	
+	#Wert in das Monatslogfile schreiben
+	writeLog(wert.to_i, Time.now.year+"/"+wert+"/log"+Time.now.strftime(%B))
+
+	$log.debug("Monatslog fertig geschrieben")
+
+	}
+
+#erst wenn alle Logs geschrieben sind, die Graphen zeichnen.
+werte.each {|wert|
+	
+	#Diagrammtitel festlegen
+	case wert
+		when "temperatur"
+			diagrammtiteljahr = "Temperaturen des Jahres "+Time.now.year
+			diagrammtitelmonat = "Temperaturen "+Time.now.strftime("%B %Y")
+		when "humidity"
+			diagrammtiteljahr = "Luftfeuchtigkeiten des Jahres "+Time.now.year
+			diagrammtitelmonat = "Leuftfeuchtigkeiten "+Time.now.strftime("%B %Y")
+		else
+			$log.warn("Wert "+wert+" ist nicht implementiert zum Graph zeichnen")
+			$log.warn("skip")
+			#nichts zeichnen, wenn der Wert nicht vorgesehen ist.
+			next
+	end
+	
+	#Jahreslog plotten
+	drawPlot(Time.now.year+"/"+wert+"/logyearly", wert+"/#{Time.now.year}.png", diagrammtiteljahr)
+	
+	$log.debug("Jahreslog fertig geplottet")
+
+	#Monatslog plotten
+	drawPlot(Time.now.year+"/"+wert+"/log"+Time.now.strftime(%B),wert+"/#{Time.now.strftime(%m)}-#{Time.now.year}.png")
+	$log.debug("Jahreslog fertig geplottet")
+
+}
+	
+$log.debug("App Finished")
