@@ -13,10 +13,6 @@ class Controller
 		if (octopus_open (&octopus) < 0) {
 			printf ("%s\n", octopus.error_str);
 			exit (0);
-		}
-		char desc[64];
-		octopus_get_hwdesc (&octopus, desc);
-		printf ("Device: %s\n", desc);
 		}'
 	end
 	
@@ -25,6 +21,15 @@ class Controller
 		void close() { //close
 		if (octopus_close (&octopus) < 1)
 	 		printf ("ERROR: %s\n", octopus.error_str);
+		}'
+	end
+	
+	inline do |builder|
+		builder.c '
+		void hwdesc(){
+		char desc[64];
+		octopus_get_hwdesc (&octopus, desc);
+		printf ("Device: %s\n", desc);
 		}'
 	end
 
