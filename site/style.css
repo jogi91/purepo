@@ -1,0 +1,16 @@
+h1 {font-family:Arial; margin:2px;}
+
+h4 {font-family:Arial; margin:1px;}
+
+h6 {font-family:Arial; margin:1px;}
+
+a {font-family:Arial;}
+
+b {visibility:hidden;}
+
+body {background-color: #dddddd;}
+
+.mitte {position: relative; left:25%; width:50%}
+
+.bild {position: relative; left: 25%; border:1px solid black; width:280px;}
+
