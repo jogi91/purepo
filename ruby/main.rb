@@ -26,7 +26,7 @@ werte.each { |wert|
 	$log.info(wert)
 	
 	#Wert in das Jahreslogfile schreiben z.B. log/2009/temperatur/logyearly
-	writeLog(wert.to_i, Time.now.year+"/"+wert+"/logyearly")
+	writeLog(wert.to_i, Time.now.year.to_s+"/"+wert+"/logyearly")
 	
 	$log.debug("Jahreslog fertig geschrieben")
 	

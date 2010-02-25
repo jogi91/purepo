@@ -15,13 +15,15 @@ end
 def getVoltage(source)
 	case source
 		when "zufall"
-			rand(50)-20
+			result = rand(50)-20
 			$log.debug("zufallswert ausgelesen")
+			$log.debug(result)
 		#when "temperatur"
 		#hier adc auslesen
 		else
 			$log.warn("keine Auslesemethode fuer diese Quelle definiert")
 	end
+	result
 end
 
 class Spannung
