@@ -14,14 +14,14 @@ $log.debug("App launched")
 
 
 # Array mit allen zu verarbeitenden Werten fuellen als Konfiguration:
-werte = ["temperatur", "weiterer Wert"]
+werte = ["zufall"]
 $log.info("folgende Werte werden ausgegeben")
 $log.info(werte)
 
 #Fuer jeden Wert folgendes tun:
 werte.each { |wert|
 	#Spannungsobjekt erstellen
-	zahlwert = 5
+	zahlwert = getVoltage
 	wert = Spannung.new(zahlwert, wert)
 	$log.info(wert)
 	
@@ -42,6 +42,9 @@ werte.each {|wert|
 	
 	#Diagrammtitel festlegen
 	case wert
+		when "zufall"
+			diagrammtiteljahr = "Zufälle des Jahres "+Time.now.year
+			diagrammtitelmonat = "Zufälle "+Time.now.strftime("%B %Y")
 		when "temperatur"
 			diagrammtiteljahr = "Temperaturen des Jahres "+Time.now.year
 			diagrammtitelmonat = "Temperaturen "+Time.now.strftime("%B %Y")
