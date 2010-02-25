@@ -21,7 +21,7 @@ $log.info(werte)
 #Fuer jeden Wert folgendes tun:
 werte.each { |wert|
 	#Spannungsobjekt erstellen
-	zahlwert = getVoltage
+	zahlwert = getVoltage(wert)
 	wert = Spannung.new(zahlwert, wert)
 	$log.info(wert)
 	
