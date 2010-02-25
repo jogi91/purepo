@@ -21,6 +21,7 @@ def getVoltage
 		#hier adc auslesen
 		else
 			$log.warn("keine Auslesemethode fuer diese Quelle definiert")
+	end
 end
 
 class Spannung
