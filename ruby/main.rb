@@ -31,7 +31,7 @@ werte.each { |wert|
 	$log.debug("Jahreslog fertig geschrieben")
 	
 	#Wert in das Monatslogfile schreiben
-	writeLog(wert.to_i, Time.now.year+"/"+wert+"/log"+Time.now.strftime("%B"))
+	writeLog(wert.to_i, Time.now.year.to_s+"/"+wert+"/log"+Time.now.strftime("%B"))
 
 	$log.debug("Monatslog fertig geschrieben")
 
