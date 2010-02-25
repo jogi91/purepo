@@ -1,6 +1,6 @@
 require "rubygems"
 require "inline"
-require "controller"
+#require "controller"
 
 require "dataprocessing"
 require "logger"
