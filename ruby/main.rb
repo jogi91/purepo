@@ -26,12 +26,12 @@ werte.each { |wert|
 	$log.info(wert)
 	
 	#Wert in das Jahreslogfile schreiben z.B. log/2009/temperatur/logyearly
-	writeLog(wert.to_i, Time.now.year.to_s+"/"+wert+"/logyearly")
+	writeLog(wert.to_i, Time.now.year.to_s+"/"+wert.to_s+"/logyearly")
 	
 	$log.debug("Jahreslog fertig geschrieben")
 	
 	#Wert in das Monatslogfile schreiben
-	writeLog(wert.to_i, Time.now.year.to_s+"/"+wert+"/log"+Time.now.strftime("%B"))
+	writeLog(wert.to_i, Time.now.year.to_s+"/"+wert.to_s+"/log"+Time.now.strftime("%B"))
 
 	$log.debug("Monatslog fertig geschrieben")
 
