@@ -4,6 +4,7 @@ module Dataprocessing
 
 
   def writeLog(spannung,pfad)
+  	$log.debug("Folgender Code wird aufgerufen:\nFile.new(\"../log/\"+#{pfad}, \"w\") unless File.exists?(\"../log/\"+#{pfad})")
   	File.new("../log/"+pfad, "w") unless File.exists?("../log/"+pfad) #File anlegen, wenn es nicht existiert
   	File.open("../log/"+pfad,"a+") do |datei|
   		datei.puts
