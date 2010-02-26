@@ -63,7 +63,7 @@ class Spannung
 	def to_humid
 	end
 	def to_zufall
-		return self
+		return @zahlwert
 	end
 	
 	def debug
