@@ -44,6 +44,9 @@ class Spannung
 			when "humidity"
 				self.to_humid
 				$log.debug("to_humid aufgerufen")
+			when "zufall"
+				self.to_zufall
+				$log.debug("to_zufall aufgerufen")
 			else
 				$log.warn "Spannung hat keine gueltige Quelle"
 		end
@@ -52,6 +55,9 @@ class Spannung
 	def to_temp
 	end
 	def to_humid
+	end
+	def to_zufall
+		return self.to_i
 	end
 	
 	def debug

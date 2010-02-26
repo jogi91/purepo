@@ -43,28 +43,28 @@ werte.each {|wert|
 	#Diagrammtitel festlegen
 	case wert
 		when "zufall"
-			diagrammtiteljahr = "Zufälle des Jahres "+Time.now.year
+			diagrammtiteljahr = "Zufälle des Jahres "+Time.now.year.to_s
 			diagrammtitelmonat = "Zufälle "+Time.now.strftime("%B %Y")
 		when "temperatur"
-			diagrammtiteljahr = "Temperaturen des Jahres "+Time.now.year
+			diagrammtiteljahr = "Temperaturen des Jahres "+Time.now.year.to_s
 			diagrammtitelmonat = "Temperaturen "+Time.now.strftime("%B %Y")
 		when "humidity"
-			diagrammtiteljahr = "Luftfeuchtigkeiten des Jahres "+Time.now.year
+			diagrammtiteljahr = "Luftfeuchtigkeiten des Jahres "+Time.now.year.to_s
 			diagrammtitelmonat = "Leuftfeuchtigkeiten "+Time.now.strftime("%B %Y")
 		else
-			$log.warn("Wert "+wert+" ist nicht implementiert zum Graph zeichnen")
+			$log.warn("Wert "+wert.to_s+" ist nicht implementiert zum Graph zeichnen")
 			$log.warn("skip")
 			#nichts zeichnen, wenn der Wert nicht vorgesehen ist.
 			next
 	end
 	
 	#Jahreslog plotten
-	drawPlot(Time.now.year+"/"+wert+"/logyearly", wert+"/#{Time.now.year}.png", diagrammtiteljahr)
+	drawPlot(Time.now.year.to_s+"/"+wert.to_s+"/logyearly", wert.to_s+"/#{Time.now.year}.png", diagrammtiteljahr)
 	
 	$log.debug("Jahreslog fertig geplottet")
 
 	#Monatslog plotten
-	drawPlot(Time.now.year+"/"+wert+"/log"+Time.now.strftime("%B"),wert+"/#{Time.now.strftime('%m')}-#{Time.now.year}.png")
+	drawPlot(Time.now.year.to_s+"/"+wert.to_s+"/log"+Time.now.strftime("%B"),wert.to_s+"/#{Time.now.strftime('%m')}-#{Time.now.year}.png")
 	$log.debug("Jahreslog fertig geplottet")
 
 }
