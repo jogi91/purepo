@@ -64,7 +64,7 @@ werte.each {|wert|
 	$log.debug("Jahreslog fertig geplottet")
 
 	#Monatslog plotten
-	drawPlot(Time.now.year.to_s+"/"+wert.to_s+"/log"+Time.now.strftime("%B"),wert.to_s+"/#{Time.now.strftime('%m')}-#{Time.now.year}.png")
+	drawPlot(Time.now.year.to_s+"/"+wert.to_s+"/log"+Time.now.strftime("%B"), wert.to_s+"/#{Time.now.strftime('%m')}-#{Time.now.year}.png", diagrammtitelmonat)
 	$log.debug("Jahreslog fertig geplottet")
 
 }
