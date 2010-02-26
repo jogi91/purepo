@@ -26,12 +26,12 @@ werte.each { |wert|
 	$log.info(wert)
 	
 	#Wert in das Jahreslogfile schreiben z.B. log/2009/temperatur/logyearly
-	writeLog(wert.to_i, Time.now.year.to_s+"/"+wert.to_s+"/logyearly")
+	writeLog(wert.to_i, Time.now.year.to_s+"/"+wert.quelle+"/logyearly")
 	
 	$log.debug("Jahreslog fertig geschrieben")
 	
 	#Wert in das Monatslogfile schreiben
-	writeLog(wert.to_i, Time.now.year.to_s+"/"+wert.to_s+"/log"+Time.now.strftime("%B"))
+	writeLog(wert.to_i, Time.now.year.to_s+"/"+wert.quelle+"/log"+Time.now.strftime("%B"))
 
 	$log.debug("Monatslog fertig geschrieben")
 
@@ -59,12 +59,12 @@ werte.each {|wert|
 	end
 	
 	#Jahreslog plotten
-	drawPlot(Time.now.year.to_s+"/"+wert.to_s+"/logyearly", wert.to_s+"/#{Time.now.year}.png", diagrammtiteljahr)
+	drawPlot(Time.now.year.to_s+"/"+wert.quelle+"/logyearly", wert.quelle+"/#{Time.now.year}.png", diagrammtiteljahr)
 	
 	$log.debug("Jahreslog fertig geplottet")
 
 	#Monatslog plotten
-	drawPlot(Time.now.year.to_s+"/"+wert.to_s+"/log"+Time.now.strftime("%B"), wert.to_s+"/#{Time.now.strftime('%m')}-#{Time.now.year}.png", diagrammtitelmonat)
+	drawPlot(Time.now.year.to_s+"/"+wert.quelle+"/log"+Time.now.strftime("%B"), wert.quelle+"/#{Time.now.strftime('%m')}-#{Time.now.year}.png", diagrammtitelmonat)
 	$log.debug("Jahreslog fertig geplottet")
 
 }
