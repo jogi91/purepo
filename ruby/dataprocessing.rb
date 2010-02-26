@@ -4,7 +4,8 @@ module Dataprocessing
 
 
   def writeLog(spannung,pfad)
-  	File.open("../log/"+pfad,"a") do |datei|
+  	File.new("../log/"+pfad, "w") unless File.exists?("../log/"+pfad) #File anlegen, wenn es nicht existiert
+  	File.open("../log/"+pfad,"a+") do |datei|
   		datei.puts
   		datei.print Time.new.strftime("%m/%d/%Y.%H:%M")
   		datei.print " "
