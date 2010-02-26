@@ -3,15 +3,12 @@
 module Dataprocessing
 
 
-  def writeLog(spannung,wert)
-  	File.open("pfad/log.txt","a") do |datei|
+  def writeLog(spannung,pfad)
+  	File.open("../log/"+pfad,"a") do |datei|
   		datei.puts
-  		datei.print Time.new
-  		datei.print ": "
+  		datei.print Time.new.strftime("%m/%d/%Y.%H:%M")
+  		datei.print " "
   		datei.print spannung
-  		datei.print " V "
-  		datei.print wert
-  		datei.print " [Einheit]"
   	end
   end
 
