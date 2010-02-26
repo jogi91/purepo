@@ -2,11 +2,18 @@
 
 module Dataprocessing
 
-def writeLog(wert,log)
-	#hier kommt der Code hin, der Logs schreibt
-	puts wert
-	puts log
-end
+
+  def writeLog(spannung,wert)
+  	File.open("pfad/log.txt","a") do |datei|
+  		datei.puts
+  		datei.print Time.new
+  		datei.print ": "
+  		datei.print spannung
+  		datei.print " V "
+  		datei.print wert
+  		datei.print " [Einheit]"
+  	end
+  end
 
 def drawPlot(logfile, outputfile, titel)
 	system "ploticus -prefab chron data=../$log/"+logfile+" header=yes x=1 y=2 datefmt=mm/dd/yyyy  xinc=\"1 day\" mode=line 	unittype=datetime title=\"#{titel}\" -o ../graph/"+outputfile+" -png"
@@ -65,7 +72,7 @@ class Spannung
 		puts "quelle: "+quelle
 		#self.to_wert
 	end
-	
+
 end
 
 end
