@@ -1,5 +1,6 @@
 require "rubygems"
 require "inline"
+require "fileutils"
 #require "controller"
 
 require "dataprocessing"
