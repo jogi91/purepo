@@ -15,6 +15,7 @@ module Dataprocessing
   end
 
 def drawPlot(logfile, outputfile, titel)
+	FileUtils.mkdir_p("../graph/"+outputfile.reverse.gsub(/^.*?\//,'').reverse)
 	system "ploticus -prefab chron data=../log/"+logfile+" header=yes x=1 y=2 datefmt=mm/dd/yyyy  xinc=\"1 day\" mode=line 	unittype=datetime title=\"#{titel}\" -o ../graph/"+outputfile+" -png"
 end
 
