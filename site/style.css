@@ -1,16 +1,26 @@
-h1 {font-family:Arial; margin:2px;}
+h1 {font-family:Arial; margin:0px; padding:2px; font-size:20px; font-weight:600;}
 
 h4 {font-family:Arial; margin:1px;}
 
-h6 {font-family:Arial; margin:1px;}
+h6 {font-family:Arial; margin:1px; font-size:10px; margin-top:10px; font-weight:100; color:#303030;}
 
-a {font-family:Arial;}
+a {font-family:Arial; margin:1px; font-size:13px; color:#303030;}
 
 b {visibility:hidden;}
 
-body {background-color: #dddddd;}
+body {background-color:#E8E8E8;}
 
-.mitte {position: relative; left:25%; width:50%}
+img {border: 1px dotted gray;}
 
-.bild {position: relative; left: 25%; border:1px solid black; width:280px;}
+.mitte {position: relative; left:25%; width:50%; padding:5px;}
+
+.bild {position: relative; left: 25%; width:280px;}
+
+.liste{
+border-bottom:1px dotted grey; 
+border-top:1px dotted grey;
+padding:5px;
+background-color:#D8D8D8;
+}
+
 

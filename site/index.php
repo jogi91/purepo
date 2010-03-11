@@ -6,6 +6,24 @@
 			function init () {
 			arrayLength = document.getElementById('zaehlertag').innerHTML;
 		    stelle = 0;
+		    <?php
+		    //Hier wird das neuste Bild gesucht
+				$topdir = openDir("../graph");
+				while($topfile = readDir($topdir)){
+					if(substr($topfile,0,1)!="."){
+						$categorydir = openDir("../graph/$topfile");
+							while($file = readDir($categorydir)){
+									if(substr($file,0,1)!="."){
+										echo "var ersterpfad = \"../graph/$topfile/$file\";";
+										break;
+									}
+							}
+							closeDir($categorydir);
+					}
+				}
+				closeDir($topdir);
+			?>
+			document.getElementById('bild').src = ersterpfad;
 			}
 			
 			function anzeigen (pfad) {
@@ -58,7 +76,7 @@
 <div class="mitte">
 
 <div class="bild">
-<img src="../graph/Feuchtigkeit/001.png" id="bild"/>
+	<img src="" id="bild"/>
 </div>
 
 <br>
@@ -66,6 +84,10 @@
 <?php
 //Zuerst wird eine Variabel generiert für die Pfeiltasten-Navigation
 $zaehler = 0;
+$zeit = 0;
+//Arrays für ansprechende Zeitausgabe
+$monate = array("Januar","Februar","M&auml;rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember");
+$tage = array("Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag");
 //Nun die Routine, um Dateien aus einem Verzeichnis auszulesen:
 //Erstes Verzeichnis wird geöffnet:
 $topdir = openDir("../graph");
@@ -73,38 +95,32 @@ $topdir = openDir("../graph");
 while($topfile = readDir($topdir)){
 //Überprüfung, ob die Datei kein versteckter Ordner ist, wenn nicht wird ein Titel geschrieben
 	if(substr($topfile,0,1)!="."){
-		echo "<h1>$topfile</h1>";
-		echo "<hr>";
-	/*	//Gefundenes Kategorienverzeichnis wird geöffnet und nach Jahresverzeichnissen durchsucht, gleicher Ablauf wie oben
-		$categorydir = openDir("../graph/$topfile");
-		while($yearfile = readDir($categorydir)){
-			if(substr($yearfile,0,1)!="."){
-			print "<h4>$yearfile -";
-			
-			//Gefundenes Jahresverzeichnis wird geöffnet und nach Monaten durchsucht
-			$yeardir = openDir("../graph/$topfile/$yearfile");
-			while($monthfile = readDir($yeardir)){
-				if(substr($monthfile,0,1)!="."){
-				print " $monthfile</h4>";
-				*/
-				//Gefundenes Monatsverzeichnis wird geöffnet und nun nach Bildern durchsucht. JS-Links werden generiert.
+		echo "<div class=\"titel\"><h1>$topfile</h1></div>";
+		echo "<div class=\"liste\">";
+				//Gefundenes Kategorienverzeichnis wird geöffnet und nun nach Bildern durchsucht. JS-Links werden generiert.
 				$categorydir = openDir("../graph/$topfile");
 				while($file = readDir($categorydir)){
 					if(substr($file,0,1)!="."){
-					echo "<a href='javascript:anzeigen(\"../graph/$topfile/$file\")' id=\"$zaehler\">$file</a><br>\n";
-					$zaehler = $zaehler+1;
+						echo "<a href='javascript:anzeigen(\"../graph/$topfile/$file\")' id=\"$zaehler\">$file</a><br>\n";
+						$zaehler = $zaehler+1;
+						//Datei mit der Höchsten änderungszeit wird gesucht
+						if (filemtime("../graph/$topfile/$file") > $zeit) {	
+							$zeit=fileatime("../graph/$topfile/$file");
+						}
 					}
-				}
+				}			
+				//Zeiten werden formatiert
+				$zeit_monat = $monate[date("n",$zeit)-1];
+				$zeit_tag = $tage[date("N",$zeit)-1];
+				$zeit_datum = date("d.",$zeit);
+				$zeit_uhrzeit = date("H:i:s",$zeit);
+				echo "<h6>Dieser Ordner wurde am $zeit_tag, den $zeit_datum $zeit_monat um $zeit_uhrzeit zuletzt ge&auml;ndert.</h6>";
+				echo "</div><br>";
 				closeDir($categorydir);
-				}/*
-			}
-			closeDir($yeardir);	
-						
+				//Zeit wird zurückgesetzt für nächsten Ordner
+				$zeit = 0;
 				}
-			}
-		closeDir($categorydir);*/
 		
-		echo "<br>";
 	}
 
 closeDir($topdir);
