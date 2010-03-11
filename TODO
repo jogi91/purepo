@@ -1,7 +1,13 @@
 = TODO =
 * Daten aus der Wetterstation auslesen und Speichern
 * Daten graphisch aufbereiten und als Diagramm ausgeben
-* Backupskript verbessern, so dass Ressourcen geschont werden
+** Jahresdiagramme
+** Diagramme der letzten 12 Monate
+** Diagramme der letzten 7 Tage
+* Die Diagramme via PHP in eine Webseite einbinden und diese dynamisch mit Updates versorgen.
+
+* (Backupskript verbessern, so dass Ressourcen geschont werden)
 
 = DONE =
 
+* Daten graphisch aufbereiten und als Diagramm ausgeben
