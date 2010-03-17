@@ -24,10 +24,14 @@
 				closeDir($topdir);
 			?>
 			document.getElementById('bild').src = ersterpfad;
+			document.getElementById('bildtext').innerHTML = ersterpfad; 
+			document.getElementById('bildtextfeld').style.width = document.getElementById('bild').width;
 			}
 			
 			function anzeigen (pfad) {
 				document.getElementById('bild').src = pfad;
+				document.getElementById('bildtext').innerHTML = pfad; 
+				document.getElementById('bildtextfeld').style.width = document.getElementById('bild').width;
 			}	
 						
 			function arrow (ev) {
@@ -49,6 +53,8 @@
 				     }
 				     var linkText = linkText.substring(anfangLink+3,endeLink);			     
 					 document.getElementById('bild').src = linkText;
+					 document.getElementById('bildtext').innerHTML = linkText; 
+			 		 document.getElementById('bildtextfeld').style.width = document.getElementById('bild').width;
 				 } else if (arrows==37) {
 				     if (stelle!=0) {
 						 stelle = stelle-1;
@@ -66,6 +72,8 @@
 				     }
 				     var linkText = linkText.substring(anfangLink+3,endeLink);
 					 document.getElementById('bild').src = linkText;
+					 document.getElementById('bildtext').innerHTML = linkText;
+			   		 document.getElementById('bildtextfeld').style.width = document.getElementById('bild').width;
 				 }
 			}
 		</script>
@@ -75,10 +83,15 @@
 
 <div class="mitte">
 
-<div class="bild">
-	<img src="" id="bild"/>
-</div>
 
+	<div class="bild">
+		<img src="" id="bild"/>
+	</div>
+	<div id="bildtextfeld">
+		<h6 id="bildtext"></h6>
+	</div>
+
+<br>
 <br>
 
 <?php

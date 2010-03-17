@@ -14,11 +14,14 @@ img {border: 1px dotted gray;}
 
 .mitte {position: relative; left:25%; width:50%; padding:5px;}
 
-.bild {position: relative; left: 25%; width:280px;}
+.bild {position: relative; left: 0%; width:280px; }
+
+#bildtextfeld {position:relative; left:0%; width:280px; border:1px dotted grey; border-top:none; background-color:#D8D8D8; padding-top:5px; }
+
+#bildtext {margin-top:0px; margin-bottom:5px;}
 
 .liste{
-border-bottom:1px dotted grey; 
-border-top:1px dotted grey;
+border:1px dotted grey;
 padding:5px;
 background-color:#D8D8D8;
 }
