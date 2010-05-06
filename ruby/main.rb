@@ -42,12 +42,12 @@ werte.each { |wert|
 werte.each {|wert|
 
 	#Jahreslog plotten
-	drawPlot(Time.now.year.to_s+"/"+wert+"/logyearly", wert+"/#{Time.now.year}.png", diagrammtiteljahr)
+	drawPlot(Time.now.year.to_s+"/"+wert+"/logyearly", wert+"/#{Time.now.year}.png", wert.diagrammtiteljahr)
 
 	$log.debug("Jahreslog fertig geplottet")
 
 	#Monatslog plotten
-	drawPlot(Time.now.year.to_s+"/"+wert+"/log"+Time.now.strftime("%B"), wert+"/#{Time.now.strftime('%m')}-#{Time.now.year}.png", diagrammtitelmonat)
+	drawPlot(Time.now.year.to_s+"/"+wert+"/log"+Time.now.strftime("%B"), wert+"/#{Time.now.strftime('%m')}-#{Time.now.year}.png", wert.diagrammtitelmonat)
 	$log.debug("Jahreslog fertig geplottet")
 
 }
