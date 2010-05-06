@@ -3,16 +3,16 @@
 module Dataprocessing
 
 
-  def writeLog(spannung,pfad)
-  	FileUtils.mkdir_p("../log/"+pfad.reverse.gsub(/^.*?\//,'').reverse)	#Directory mit Regexp auslesen und erstellen, wenn es nicht existiert
-  	File.new("../log/"+pfad, "w") unless File.exists?("../log/"+pfad) #File anlegen, wenn es nicht existiert
-  	File.open("../log/"+pfad,"a+") do |datei|
-  		datei.puts
-  		datei.print Time.new.strftime("%m/%d/%Y.%H:%M")
-  		datei.print " "
-  		datei.print spannung
-  	end
-  end
+  def writeLog(spannung,pfad)
+  	FileUtils.mkdir_p("../log/"+pfad.reverse.gsub(/^.*?\//,'').reverse)	#Directory mit Regexp auslesen und erstellen, wenn es nicht existiert
+  	File.new("../log/"+pfad, "w") unless File.exists?("../log/"+pfad) #File anlegen, wenn es nicht existiert
+  	File.open("../log/"+pfad,"a+") do |datei|
+  		datei.puts
+  		datei.print Time.new.strftime("%m/%d/%Y.%H:%M")
+  		datei.print " "
+  		datei.print spannung
+  	end
+  end
 
 def drawPlot(logfile, outputfile, titel)
 	FileUtils.mkdir_p("../graph/"+outputfile.reverse.gsub(/^.*?\//,'').reverse)
@@ -36,7 +36,7 @@ end
 class Spannung
 	#Attribute werden festgelegt:
 	attr_accessor :zahlwert, :quelle, :diagrammtiteljahr, :diagrammtitelmonat
-	
+
 	#initialisierung per default als Temperatur
 	def initialize(zahlwert, quelle = "temperatur")
 		@zahlwert = zahlwert
@@ -59,8 +59,7 @@ class Spannung
 				next
 		end
 	end
-	
-	
+
 	def to_i
 		case @quelle
 			when "temperatur"
@@ -77,7 +76,7 @@ class Spannung
 				$log.warn "Spannung hat keine gueltige Quelle"
 		end
 	end
-	
+
 	def to_temp
 	end
 	def to_humid
@@ -85,13 +84,12 @@ class Spannung
 	def to_zufall
 		self.zahlwert
 	end
-	
+
 	def debug
 		puts "Zahlwert: "+zahlwert.to_s
 		puts "quelle: "+quelle
 		#self.to_wert
 	end
-	
 
 end
 
