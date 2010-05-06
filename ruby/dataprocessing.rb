@@ -2,7 +2,6 @@
 
 module Dataprocessing
 
-
   def writeLog(spannung,pfad)
   	FileUtils.mkdir_p("../log/"+pfad.reverse.gsub(/^.*?\//,'').reverse)	#Directory mit Regexp auslesen und erstellen, wenn es nicht existiert
   	File.new("../log/"+pfad, "w") unless File.exists?("../log/"+pfad) #File anlegen, wenn es nicht existiert
@@ -35,14 +34,31 @@ end
 
 class Spannung
 	#Attribute werden festgelegt:
-	attr_accessor :zahlwert, :quelle
-	
+	attr_accessor :zahlwert, :quelle, :diagrammtiteljahr, :diagrammtitelmonat
+
 	#initialisierung per default als Temperatur
 	def initialize(zahlwert, quelle = "temperatur")
 		@zahlwert = zahlwert
 		@quelle = quelle
+		#Hier wird der Diagrammtitel entschieden.
+		case quelle
+			when "zufall"
+				@diagrammtiteljahr = "Zufälle des Jahres "+Time.now.year.to_s
+				@diagrammtitelmonat = "Zufälle "+Time.now.strftime("%B %Y")
+			when "temperatur"
+				@diagrammtiteljahr = "Temperaturen des Jahres "+Time.now.year.to_s
+				@diagrammtitelmonat = "Temperaturen "+Time.now.strftime("%B %Y")
+			when "humidity"
+				@diagrammtiteljahr = "Luftfeuchtigkeiten des Jahres "+Time.now.year.to_s
+				@diagrammtitelmonat = "Leuftfeuchtigkeiten "+Time.now.strftime("%B %Y")
+			else
+				$log.warn("Wert "+wert.to_s+" ist nicht implementiert zum Graph zeichnen")
+				$log.warn("skip")
+				#nichts zeichnen, wenn der Wert nicht vorgesehen ist.
+				next
+		end
 	end
-	
+
 	def to_i
 		case @quelle
 			when "temperatur"
@@ -59,7 +75,7 @@ class Spannung
 				$log.warn "Spannung hat keine gueltige Quelle"
 		end
 	end
-	
+
 	def to_temp
 	end
 	def to_humid
@@ -67,7 +83,6 @@ class Spannung
 	def to_zufall
 		self.zahlwert
 	end
-	
 	def debug
 		puts "Zahlwert: "+zahlwert.to_s
 		puts "quelle: "+quelle
